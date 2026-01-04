@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>هدية عيد ميلاد</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    height: 100vh;
+
+    /* الخلفية */
+    background-image: url("images/memo.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+
+    animation: moveBg 10s ease-in-out infinite alternate;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* حركة الخلفية */
+@keyframes moveBg {
+    0%   { background-position: center 0%; }
+    100% { background-position: center 100%; }
+}
+
+/* الكارت */
+.container {
+    background: rgba(255,255,255,0.8);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease;
+}
+
+button {
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: #ff4b5c;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff1f3a;
+}
+
+/* صندوق الهدية */
+.gift-box {
+    width: 260px;
+    height: 260px;
+    margin: 30px auto 0;
+    position: relative;
+    display: none;
+}
+
+.cover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ff4b5c, #ff9a9e);
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.gift-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* الاسم */
+.name {
+    margin-top: 20px;
+    font-size: 24px;
+    display: none;
+}
+
+.name span {
+    color: #ff4b5c;
+    font-weight: bold;
+}
+
+/* أنيميشن */
+@keyframes openGift {
+    to { transform: scale(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🎉  H.B.D  🎉</h2>
+    <button onclick="openGift()"> OPEN </button>
+
+    <div class="gift-box" id="giftBox">
+        <div class="cover" id="cover"></div>
+        <img src="images/memo.jpeg" alt="Gift">
+    </div>
+
+    <div class="name" id="nameText">
+    <p>🎉  اخويا مش صاحبى اجدع خلق الله ! 🎉</p>
+    🎂 كل سنة وانت طيب يا اخويا وعقبال 100 سنه وتحقق كل اللى بتتمناه <span id="personName"></span> 🎂
+</div>
+
+    <div class="name" id="nameText">
+        🎂 كل سنة وانت طيب يا اخويا <span id="personName"></span> 🎂
+    </div>
+</div>
+
+<script>
+const person = ""; // غير الاسم من هنا
+
+function openGift() {
+    document.getElementById("giftBox").style.display = "block";
+    document.getElementById("personName").innerText = person;
+
+    const cover = document.getElementById("cover");
+    cover.style.animation = "openGift 0.8s ease forwards";
+
+    setTimeout(() => {
+        document.getElementById("nameText").style.display = "block";
+    }, 800);
+}
+</script>
+
+</body>
+</html>
